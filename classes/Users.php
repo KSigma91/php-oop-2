@@ -2,14 +2,23 @@
 
 class Users {
     public $nickname;
-    private $password;
+    //public $sales = 25;
+    public $signin = true;
 
-    public function __construct(string $nickname, string $password)
+    public function __construct(string $nickname, bool $signin)
     {
         $this->nickname = $nickname;
-        $this->password = $password;
+        $this->signin = $signin;
+        $this->getAccess();
+    }
+
+    public function getAccess() {
+        if ($this->nickname != $this->signin) {
+            return 'Questo nome utente non è registrato';
+        } else {
+            return 'Accesso completato';
+        }
     }
 }
-
 
 ?>
